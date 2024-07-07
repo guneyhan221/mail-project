@@ -33,6 +33,7 @@ def homepage():
 
 @app.route("/home/")
 def home():
+    print("merhaba")
     return render_template("home.html",loged_in=False)
 
 
