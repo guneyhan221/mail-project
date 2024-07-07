@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hesap Oluştur</title>
+    <link rel="stylesheet" href="../static/css/createaccount.css">
 </head>
 <body>
-    
+    <div class="container">
+        <form action="">
+            <div class="header-text">Hesap Oluştur</div>
+
+            <input type="text" id="username" name="username"  required autocomplete="off">
+            <label for="username">Kullanıcı adınız</label>
+
+            <input type="password" id="password-input" name="password" required autocomplete="off">
+            <label for="password">Kullanıcı adınız</label>
+
+            <input type="radio" name="gender" value="erkek">
+            <label for="erkek">Erkek</label>
+            <input type="radio" name="gender" value="kadın">
+            <label for="erkek">Kadın</label>
+
+            <input type="date" name="birth-date" id="birth-date">
+            <label for="birth-date">Doğum tarihiniz</label>
+
+            <button type="submit">Gönder</button>
+        </form>
+    </div>
 </body>
 </html>
