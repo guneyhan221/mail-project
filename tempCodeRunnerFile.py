@@ -1,1 +1,1 @@
- birth_date=
+file.write(password + '\n')

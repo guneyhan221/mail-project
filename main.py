@@ -43,24 +43,14 @@ def createaccontpage():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    username = request.form['username']
-    password = request.form['pasword-input']
-    gender = request.form['gender-label']
-    birth = request.form['birth-date']
-    
-    # Kullanıcı adını bir dosyaya yaz
-    with open(username + "'s submit.txt", "a") as file:
-        file.write(username + '\n')
-        file.write(password + '\n')
-        file.write(username + '\n')
-        file.write(username + '\n')
-    
-    return f'Hoş Geldin {username}!'
+    if request.method=="POST":
+        username = request.form['username']
+        password = request.form['pasword-input']
+        gender = request.form['gender-label']
+        birth = request.form['birth-date']
 
-    
-    # Kullanıcı adını bir dosyaya yaz
-    file.write(password + '\n')
-
+    else:
+        return redirect(url_for("createaccontpage"))
 
 
 app.run(debug=True)
