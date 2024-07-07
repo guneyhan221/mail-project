@@ -11,17 +11,25 @@ db=SQLAlchemy(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(24), nullable=False,unique=False)
+    username = db.Column(db.String(24), nullable=False,unique=True)
     password = db.Column(db.String(48), nullable=False)
-    gender=db.Column(db.String(10),nullable=False)
+    gender=db.Column(db.String(40),nullable=False)
     birth_date=db.Column(db.String(20),nullable=False)
 
+    def __init__(self,username,password,gender,birth_date) -> None:
+        self.username=username 
+        self.password=password
+        self.gender=gender 
+        self.birth_date=birth_date
     def __repr__(self) -> str:
         return f"<User {self.id}>"
 
 #Functions
 def get_user(id:int)->User:
     return User.query.get_or_404(id)
+def delete_user(id:int):
+    db.session.delete(User.query.filter_by(id=id).first())
+    db.session.commit()
 #Other decarators
 @app.before_request
 def create_databases():
@@ -37,20 +45,35 @@ def home():
     return render_template("home.html",loged_in=False)
 
 @app.route("/create-account")
-def createaccontpage():
+def createaccountpage():
     return render_template("createaccount.html")
 
 
-@app.route('/submit', methods=['POST'])
+@app.route('/submit', methods=['GET','POST'])
 def submit():
     if request.method=="POST":
         username = request.form['username']
-        password = request.form['pasword-input']
-        gender = request.form['gender-label']
-        birth = request.form['birth-date']
+        password = request.form['password']
+        gender = request.form['gender']
+        birth_date = request.form['birth-date']
 
+        user_found = User.query.filter_by(username=username).first()
+
+        if user_found:
+            return redirect(url_for("createaccountpage"))
+        else:
+            user = User(username=username, password=password, gender=gender, birth_date=birth_date)
+            db.session.add(user)
+            db.session.commit()
+
+        return redirect(url_for("users"))  
     else:
-        return redirect(url_for("createaccontpage"))
+        return redirect(url_for("createaccountpage"))
 
+@app.route("/users")
+def users(methods=["DELETE"]):
+    users=User.query.all()
+    delete_user(users[-1].id)
+    return "<br>".join([f"{user.username}-{user.password}-{user.gender}-{user.birth_date}" for user in users])
 
 app.run(debug=True)
