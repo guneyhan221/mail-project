@@ -45,10 +45,12 @@ body{
     padding: 5;
     border: none;
     border-bottom: 1px solid black;
+    transition: all 0.8s;
 }
 
 .username-input input:focus{
     outline: 0;
+    border-color: rgb(147, 6, 6);
 }
 
 .password-input{
@@ -61,8 +63,15 @@ body{
     padding: 5;
     border: none;
     border-bottom: 1px solid black;
+    transition: all 0.8s;
 }
 
 .password-input input:focus{
     outline: 0;
+    border-color: rgb(147, 6, 6);
+}
+
+#gender-selection,label[for="gender"]{
+    margin-left: 30px;
+    margin-top: 10px;
 }
