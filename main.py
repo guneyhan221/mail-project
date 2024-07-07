@@ -28,8 +28,12 @@ def create_databases():
 
 #Routes
 @app.route("/")
+def homepage():
+    return redirect(url_for("home"))
+
+@app.route("/home/")
 def home():
-    return render_template("index.html")
+    return render_template("home.html",loged_in=False)
 
 
 app.run(debug=True)
