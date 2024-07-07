@@ -1,5 +1,6 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app=Flask(__name__)
 
@@ -38,5 +39,28 @@ def home():
 @app.route("/create-account")
 def createaccontpage():
     return render_template("createaccount.html")
+
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    username = request.form['username']
+    password = request.form['pasword-input']
+    gender = request.form['gender-label']
+    birth = request.form['birth-date']
+    
+    # Kullanıcı adını bir dosyaya yaz
+    with open(username + "'s submit.txt", "a") as file:
+        file.write(username + '\n')
+        file.write(password + '\n')
+        file.write(username + '\n')
+        file.write(username + '\n')
+    
+    return f'Hoş Geldin {username}!'
+
+    
+    # Kullanıcı adını bir dosyaya yaz
+    file.write(password + '\n')
+
+
 
 app.run(debug=True)
