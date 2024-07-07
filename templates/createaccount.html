@@ -15,13 +15,17 @@
                 <label for="username">Kullanıcı adınız</label><br>
                 <input type="text" id="username" name="username"  required autocomplete="off">
             </div>
-            
+            <div class="username-information-text">
+                *Kullanıcı adı en az 4 harf, en fazla 24 harf içerebilir.<br>
+                Kullanıcı adı içerisinde özel işaretler(!,% gibi) ve boşluk içeremez. <br>
+            </div>
             <div class="password-input">
                 <label for="password">Şifreniz</label><br>
                 <input type="password" id="password-input" name="password" required autocomplete="off">
             </div>
             
-            <label for="gender">Cinsiyetiniz</label><br>
+        
+            <label for="gender" id="gender-label">Cinsiyetiniz</label><br>
             <select name="gender" id="gender-selection">
                 <option value="male">Erkek</option>
                 <option value="female">Kadın</option>
@@ -32,7 +36,7 @@
                 <input type="date" name="birth-date" id="birth-date">           
             </div>
             <br>
-            <div class="submit-button"><button type="submit">Gönder</button></div>
+            <div class="submit-button"><button type="submit" id="submit-button">Gönder</button></div>
         </div>
     </form>
 </body>
