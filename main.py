@@ -29,7 +29,7 @@ def create_databases():
 #Routes
 @app.route("/")
 def home():
-    return ""
+    return render_template("index.html")
 
 
 app.run(debug=True)
