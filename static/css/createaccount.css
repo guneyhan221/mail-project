@@ -62,6 +62,7 @@ body{
 .password-input{
     margin-left: 30px;
     margin-top: 20px;
+    position: relative;
 }
 
 .password-input input{
@@ -110,4 +111,11 @@ body{
 
 .submit-button button:hover{
     transform: scale(1.15);
+}
+
+.visibility-image{
+    position: absolute;
+    width:34px;
+    bottom:10px;
+    height:34px;
 }
