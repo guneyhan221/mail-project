@@ -41,3 +41,11 @@ a{
 .navbar ul li:hover{
     transform: scale(1.2);
 }
+
+#logo-image{
+    position: absolute;
+    width:140px;
+    height:80px;
+    top:10px;
+    left:160px;
+}
