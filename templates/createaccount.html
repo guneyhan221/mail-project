@@ -7,23 +7,32 @@
     <link rel="stylesheet" href="../static/css/createaccount.css">
 </head>
 <body>
+<<<<<<< HEAD
     <form action="/submit" method="POST">
+=======
+    <form action="/creating-account" method="post">
+>>>>>>> b7dc825fc188d2bb2242d37c4b25c48432740dd8
         <div class="container">
             <div class="header-text">Hesap Oluştur</div>
             
             <div class="username-input">
                 <label for="username">Kullanıcı adınız</label><br>
-                <input type="text" id="username" name="username"  required autocomplete="off">
+                <input type="text" id="username" name="username" id="username-input"  required autocomplete="off">
             </div>
             <div class="username-information-text">
-                *Kullanıcı adı en az 4 harf, en fazla 24 harf içerebilir.<br>
+                *Kullanıcı adı en az 4 harf, en fazla 24 karakter içerebilir.<br>
                 Kullanıcı adı içerisinde özel işaretler(!,% gibi) ve boşluk içeremez. <br>
             </div>
             <div class="password-input">
                 <label for="password">Şifreniz</label><br>
                 <input type="password" id="password-input" name="password" required autocomplete="off">
+                <img src="../static/img/visibility.png" alt="Visibility" class="visibility-image">
             </div>
-            
+
+            <div class="password-information-text">
+                *Şifre en az 8 en fazla 64 karakter içerebilir. <br>
+                Şifre içerisinde en az bir büyük harf,küçük harf ve rakam içermelidir.
+            </div>
         
             <label for="gender" id="gender-label">Cinsiyetiniz</label><br>
             <select name="gender" id="gender-selection">
@@ -39,5 +48,6 @@
             <div class="submit-button"><button type="submit" id="submit-button">Gönder</button></div>
         </div>
     </form>
+    <script src="../static/js/script.js"></script>
 </body>
 </html>
