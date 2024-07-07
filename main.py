@@ -12,6 +12,8 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(24), nullable=False,unique=False)
     password = db.Column(db.String(48), nullable=False)
+    gender=db.Column(db.String(10),nullable=False)
+    birth_date=db.Column(db.String(20),nullable=False)
 
     def __repr__(self) -> str:
         return f"<User {self.id}>"
