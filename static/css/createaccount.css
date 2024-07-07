@@ -16,3 +16,53 @@ ul{
 a{
     text-decoration: none;
 }
+
+body{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.container{
+    width:500px;
+    height:550px;
+    border-radius: 5px;
+    border:1px solid black;
+
+}
+
+.header-text{
+    text-align: center;
+    font-size: 40px;
+}
+
+.username-input{
+    margin-left: 30px;
+}
+
+.username-input input{
+    width:400px;
+    padding: 5;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.username-input input:focus{
+    outline: 0;
+}
+
+.password-input{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.password-input input{
+    width:400px;
+    padding: 5;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.password-input input:focus{
+    outline: 0;
+}
