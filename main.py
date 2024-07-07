@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///userandposts.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db=SQLAlchemy(app)
-#a
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(24), nullable=False,unique=False)
