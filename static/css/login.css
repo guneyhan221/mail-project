@@ -16,7 +16,7 @@ body{
 
 .container{
     width:500px;
-    height:600px;
+    height:500px;
     border-radius: 5px;
     border:1px solid black;
     position: relative;
@@ -40,5 +40,27 @@ input:focus{
     margin-top: 10px;
     border: none;
     border-bottom: 1px solid black;
-    width: 80%;
+    width: 90%;
+}
+
+.password-input{
+    margin-top: 20px;
+}
+#password-input{
+    margin-top: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 90%;
+}
+
+.forget-checkbox{
+    margin-top: 20px;
+}
+
+#submit-button{
+    position: absolute;
+    width: 90%;
+    height:50px;
+    background-color: rgb(48, 47, 47);
+    color:white;
 }
