@@ -27,8 +27,8 @@ class User(db.Model):
 #Functions
 def get_user(id:int)->User:
     return User.query.get_or_404(id)
-def delete_user(**kwargs):
-    db.session.delete(User.query.filter_by(**kwargs).first())
+def delete_user(id:int):
+    db.session.delete(User.query.filter_by(id=id).first())
     db.session.commit()
 #Other decarators
 @app.before_request
@@ -48,12 +48,13 @@ def home():
 def createaccountpage():
     return render_template("createaccount.html")
 
-
+#change
 @app.route('/submit', methods=['GET','POST'])
 def submit():
     if request.method=="POST":
         username = request.form['username']
         password = request.form['password']
+        password_again = request.form['password-again']
         gender = request.form['gender']
         birth_date = request.form['birth-date']
 

@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="../static/img/icon.png">
 </head>
 <body>
-    <form action="/submit" method="POST" class="create-account-form">
+    <form method="POST" class="create-account-form">
         <div class="container">
             <div class="header-text">Hesap Oluştur</div>
             
@@ -30,7 +30,13 @@
                 *Şifre en az 8 en fazla 64 karakter içerebilir. <br>
                 Şifre içerisinde en az bir büyük harf,küçük harf ve rakam içermelidir.
             </div>
-        
+
+            <div class="password-again-input">
+                <label for="password-again">Şifreniz (Tekrar)</label><br>
+                <input type="password" id="password-input" name="password-again" required autocomplete="off">
+            </div>
+
+            <br>
             <label for="gender" id="gender-label">Cinsiyetiniz</label><br>
             <select name="gender" id="gender-selection" required>
                 <option value="male">Erkek</option>
@@ -40,6 +46,12 @@
             <div class="birth-date-input">
                 <label for="birth-date">Doğum tarihiniz</label> <br>
                 <input type="date" name="birth-date" id="birth-date" required>           
+            </div>
+            
+            <br>
+            <div class="dontforgetme-input">
+                <label for="dontforgetme">Beni Unutma</label>
+                <input type="checkbox" name="dontforgetme" id="dontforgetme">
             </div>
             <br>
             <div class="submit-button"><button type="submit" id="submit-button">Gönder</button></div>
