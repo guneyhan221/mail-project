@@ -54,6 +54,7 @@ def submit():
     if request.method=="POST":
         username = request.form['username']
         password = request.form['password']
+        password_again = request.form['password-again']
         gender = request.form['gender']
         birth_date = request.form['birth-date']
 

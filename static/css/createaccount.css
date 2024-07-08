@@ -25,7 +25,7 @@ body{
 
 .container{
     width:500px;
-    height:630px;
+    height:750px;
     border-radius: 5px;
     border:1px solid black;
     position: relative;
@@ -79,6 +79,12 @@ body{
 
 .password-input input:focus{
     outline: 0;
+}
+
+.password-again-input {
+    margin-left: 30px;
+    margin-top: 20px;
+    position: relative;
 }
 #gender-label{
     margin-left: 30px;
