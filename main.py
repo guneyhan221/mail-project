@@ -43,6 +43,7 @@ def homepage():
 def home():
     if request.method=="POST":
         rememberme=request.form["remember-me"]#
+        print(rememberme)
         return render_template("home.html",loged_in=True)
     return render_template("home.html",loged_in=False)
 
