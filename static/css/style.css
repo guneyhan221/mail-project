@@ -15,12 +15,13 @@ ul{
 
 a{
     text-decoration: none;
+    font-size: 18px;
 }
 
 .navbar{
     width: 100%;
     height:100px;
-    background:red;
+    background:rgb(230, 242, 255);
     transition: all 1s;
     opacity: 0.9;
 }
@@ -44,8 +45,8 @@ a{
 
 #logo-image{
     position: absolute;
-    width:140px;
-    height:80px;
-    top:10px;
+    width:270px; /*140*/
+    height:100px; /*70*/
+    top:0px;
     left:160px;
 }
