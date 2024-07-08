@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(){
     const visibilityButton=document.querySelector(".visibility-image");
-    const passwordInput=document.querySelector("#password-input")
-    
+    const passwordInput=document.querySelector("#password-input");
+    const form=document.querySelector("#form");
+
     visibilityButton.addEventListener("click",()=>{
         let path=visibilityButton.getAttribute("src")=="../static/img/visibility.png" ? "../static/img/visibility_off.png" : "../static/img/visibility.png";
         visibilityButton.setAttribute("src",path)
@@ -9,4 +10,6 @@ document.addEventListener("DOMContentLoaded", function(){
         passwordInput.setAttribute("type",type);
         
     })
+
+    form
 })

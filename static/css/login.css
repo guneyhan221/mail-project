@@ -16,7 +16,7 @@ body{
 
 .container{
     width:450px;
-    height:380px;
+    height:480px;
     border-radius: 5px;
     border:1px solid black;
     position: relative;
@@ -64,5 +64,14 @@ input:focus{
     background-color: rgb(48, 47, 47);
     color:white;
     margin-top: 30px;
+    cursor: pointer;
+}
+
+.visibility-image{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 10px;
+    top: 150px;
     cursor: pointer;
 }
