@@ -20,12 +20,12 @@ a{
 body{
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .container{
     width:500px;
-    height:600px;
+    height:630px;
     border-radius: 5px;
     border:1px solid black;
     position: relative;
@@ -90,6 +90,11 @@ body{
 }
 
 .birth-date-input{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.dontforgetme-input{
     margin-left: 30px;
     margin-top: 10px;
 }

@@ -73,6 +73,6 @@ document.addEventListener("DOMContentLoaded",()=>{
         return birthDateInput.value==null;
     }
 
-    birthDateInput.addEventListener("input",console.log(birthDateInput.value))
+    birthDateInput.addEventListener("input",console.log(birthDateInput.value));
     
 });
