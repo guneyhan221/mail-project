@@ -69,10 +69,6 @@ document.addEventListener("DOMContentLoaded",()=>{
         }
     }
 
-    function controlBirthDate(){
-        return birthDateInput.value==null;
-    }
-
-    birthDateInput.addEventListener("input",console.log(birthDateInput.value));
+    
     
 });

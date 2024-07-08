@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="../static/img/icon.png">
 </head>
 <body>
-    <form method="POST" class="create-account-form">
+    <form action="/submit" method="POST" class="create-account-form">
         <div class="container">
             <div class="header-text">Hesap Oluştur</div>
             
@@ -33,7 +33,7 @@
 
             <div class="password-again-input">
                 <label for="password-again">Şifreniz (Tekrar)</label><br>
-                <input type="password" id="password-input" name="password-again" required autocomplete="off">
+                <input type="password" id="password-again-input" name="password-again" required autocomplete="off">
             </div>
 
             <br>
@@ -49,10 +49,6 @@
             </div>
             
             <br>
-            <div class="dontforgetme-input">
-                <label for="dontforgetme">Beni Unutma</label>
-                <input type="checkbox" name="dontforgetme" id="dontforgetme">
-            </div>
             <br>
             <div class="submit-button"><button type="submit" id="submit-button">Gönder</button></div>
         </div>

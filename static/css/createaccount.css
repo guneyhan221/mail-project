@@ -25,7 +25,7 @@ body{
 
 .container{
     width:500px;
-    height:750px;
+    height:700px;
     border-radius: 5px;
     border:1px solid black;
     position: relative;
@@ -125,4 +125,15 @@ body{
     width:34px;
     bottom:10px;
     height:34px;
+}
+
+#password-again-input {
+    border: none;
+    border-bottom: 1px solid black;
+    width:80%;
+    transition: all .8s;
+}
+
+#password-again-input:focus{
+    outline: 0;
 }
