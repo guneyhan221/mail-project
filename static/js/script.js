@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     const visibilityButton=document.querySelector(".visibility-image");
     const passwordInput=document.querySelector("#password-input")
     const usernameInput=document.querySelector("input[name='username']")
+    const form=document.querySelector(".create-account-form")
     const usernameRegex=/^(?=.*\d)[a-zA-Z0-9_]{4,24}$/;
     const passwordRegex=/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,64}$/;
 
@@ -26,6 +27,13 @@ document.addEventListener("DOMContentLoaded",()=>{
             usernameInput.style.borderColor="green";
         }else{
             usernameInput.style.borderColor="red";
+        }
+    });
+
+    form.addEventListener("submit",()=>{
+        if(!passwordRegex.test(passwordInput.value)){
+            window.location.href="/create-account";
+            alert("Şifreniz gereksinimleri karşılamıyor!");
         }
     });
 });
