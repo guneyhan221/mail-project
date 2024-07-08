@@ -42,8 +42,9 @@ def homepage():
 @app.route("/home/",methods=["GET", "POST"])
 def home():
     if request.method=="POST":
+        rememberme=request.form["remember-me"]
         return render_template("home.html",loged_in=True)
-    return render_template("home.html",loged_in=True)
+    return render_template("home.html",loged_in=False)
 
 @app.route("/create-account")
 def createaccountpage():
