@@ -64,12 +64,7 @@ def submit():
         password = request.form['password']
         gender = request.form['gender']
         birth_date = request.form['birth-date']
-        try:
-            if username not in os.listdir("users/"):
-                os.makedirs(f"users/{str(username)}")
-        except: 
-            os.makedirs("users") 
-            os.makedirs(f"users/{str(username)}")
+        
         
 
         user_found = User.query.filter_by(username=username).first()
@@ -78,6 +73,22 @@ def submit():
             return redirect(url_for("createaccountpage"))
         else:
             user = User(username=username, password=password, gender=gender, birth_date=birth_date)
+            try:
+                if username not in os.listdir("users/"):
+                    os.makedirs(f"users/{str(username)}")
+                    with open(f"users/{username}/giden.txt","w") as f:
+                        pass
+
+                    with open(f"users/{username}/gelen.txt","w") as f:
+                        pass
+            except: 
+                os.makedirs("users") 
+                os.makedirs(f"users/{str(username)}")
+                with open(f"users/{username}/giden.txt","w") as f:
+                    pass
+
+                with open(f"users/{username}/gelen.txt","w") as f:
+                    pass
             db.session.add(user)
             db.session.commit()
             
@@ -90,10 +101,10 @@ def submit():
 def login():
 
     return render_template("login.html")
-@app.route("/users",methods=["DELETE"])
+@app.route("/users")
 def users():
     users=User.query.all()
-    delete_user(users[-1].id)
+
     return "<br>".join([f"{user.username}-{user.password}-{user.gender}-{user.birth_date}" for user in users])
 
 app.run(debug=True)
