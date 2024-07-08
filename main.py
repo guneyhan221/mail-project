@@ -1,7 +1,6 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 import os
-
 app=Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db' 
@@ -54,9 +53,10 @@ def submit():
     if request.method=="POST":
         username = request.form['username']
         password = request.form['password']
-        password_again = request.form['password-again']
         gender = request.form['gender']
         birth_date = request.form['birth-date']
+        if username not in os.listdir("users/"):
+            os.makedirs(str(username))
 
         user_found = User.query.filter_by(username=username).first()
 
@@ -66,6 +66,7 @@ def submit():
             user = User(username=username, password=password, gender=gender, birth_date=birth_date)
             db.session.add(user)
             db.session.commit()
+            
 
         return redirect(url_for("users"))  
     else:
