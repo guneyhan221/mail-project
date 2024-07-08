@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded",()=>{
     const visibilityButton=document.querySelector(".visibility-image");
     const passwordInput=document.querySelector("#password-input")
+    const passwordAgainInput=document.querySelector("#password-again-input");
     const usernameInput=document.querySelector("input[name='username']")
-    const birthDateInput=document.querySelector("#birth-date");
     const submitButton=document.querySelector("#submit-button")
     const usernameRegex=/^(?=.*\d)[a-zA-Z0-9_]{4,24}$/;
     const passwordRegex=/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,64}$/;
@@ -69,10 +69,22 @@ document.addEventListener("DOMContentLoaded",()=>{
         }
     }
 
-    function controlBirthDate(){
-        return birthDateInput.value==null;
-    }
-
-    birthDateInput.addEventListener("input",console.log(birthDateInput.value));
+    passwordAgainInput.addEventListener("input",()=>{
+        if(passwordAgainInput.value===passwordInput.value){
+            passwordAgainInput.style.borderColor="green";
+            if(passwordRegex.test(passwordInput.value) && passwordRegex.test(passwordInput.value)){
+                submitButton.disabled=false;
+                submitButton.style.backgroundColor="#313a43";
+                submitButton.addEventListener("mouseenter",onHover);
+                submitButton.addEventListener("mouseleave",onLeave);
+            }
+        }else{
+            passwordAgainInput.style.borderColor="red";
+            submitButton.disabled=true;
+            submitButton.style.backgroundColor="#9fa8b5";
+            submitButton.removeEventListener("mouseenter",onHover);
+            submitButton.removeEventListener("mouseleave",onLeave);
+        }
+    });
     
 });
