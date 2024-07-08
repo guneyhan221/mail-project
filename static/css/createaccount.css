@@ -126,3 +126,13 @@ body{
     bottom:10px;
     height:34px;
 }
+
+#password-again-input {
+    border: none;
+    border-bottom: 1px solid black;
+    width:80%;
+}
+
+#password-again-input:focus{
+    outline: 0;
+}
