@@ -27,8 +27,8 @@ class User(db.Model):
 #Functions
 def get_user(id:int)->User:
     return User.query.get_or_404(id)
-def delete_user(id:int):
-    db.session.delete(User.query.filter_by(id=id).first())
+def delete_user(**kwargs):
+    db.session.delete(User.query.filter_by(**kwargs).first())
     db.session.commit()
 #Other decarators
 @app.before_request
