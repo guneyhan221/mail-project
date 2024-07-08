@@ -15,8 +15,8 @@ body{
 }
 
 .container{
-    width:500px;
-    height:500px;
+    width:450px;
+    height:400px;
     border-radius: 5px;
     border:1px solid black;
     position: relative;
@@ -63,4 +63,6 @@ input:focus{
     height:50px;
     background-color: rgb(48, 47, 47);
     color:white;
+    margin-top: 30px;
+    cursor: pointer;
 }
