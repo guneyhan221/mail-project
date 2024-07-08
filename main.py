@@ -70,6 +70,9 @@ def submit():
     else:
         return redirect(url_for("createaccountpage"))
 
+@app.route("/login")
+def login():
+    return render_template("login.html")
 @app.route("/users")
 def users(methods=["DELETE"]):
     users=User.query.all()
