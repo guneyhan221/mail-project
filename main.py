@@ -42,7 +42,11 @@ def homepage():
 @app.route("/home/",methods=["GET", "POST"])
 def home():
     if request.method=="POST":
-        rememberme=request.form["remember-me"]#
+        rememberme=request.form["remember-me"]
+        if rememberme =="on":
+            visiter_ip = request.remote_addr
+            rmipf = open("rmip.txt",'w')
+            rmipf.writelines(visiter_ip)
         print(rememberme)
         return render_template("home.html",loged_in=True)
     return render_template("home.html",loged_in=False)
@@ -83,6 +87,7 @@ def submit():
 
 @app.route("/login")
 def login():
+
     return render_template("login.html")
 @app.route("/users",methods=["DELETE"])
 def users():
