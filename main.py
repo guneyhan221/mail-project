@@ -47,6 +47,7 @@ def home():
             visiter_ip = request.remote_addr
             rmipf = open("rmip.txt",'w')
             rmipf.writelines(visiter_ip)
+            rmipf.close()
         print(rememberme)
         return render_template("home.html",loged_in=True)
     return render_template("home.html",loged_in=False)
