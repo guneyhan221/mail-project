@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     const visibilityButton=document.querySelector(".visibility-image");
     const passwordInput=document.querySelector("#password-input");
+    const rememberCheckbox=document.querySelector("#remember-me");
     const form=document.querySelector("#form");
 
     visibilityButton.addEventListener("click",()=>{
@@ -11,5 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
         
     })
 
-    form
+    form.addEventListener("submit",()=>{
+        localStorage.setItem("rememberMe",rememberCheckbox.value);
+    })
 })

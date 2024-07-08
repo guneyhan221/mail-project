@@ -39,9 +39,11 @@ def create_databases():
 def homepage():
     return redirect(url_for("home"))
 
-@app.route("/home/")
+@app.route("/home/",methods=["GET", "POST"])
 def home():
-    return render_template("home.html",loged_in=False)
+    if request.method=="POST":
+        return render_template("home.html",loged_in=True)
+    return render_template("home.html",loged_in=True)
 
 @app.route("/create-account")
 def createaccountpage():
@@ -75,8 +77,8 @@ def submit():
 @app.route("/login")
 def login():
     return render_template("login.html")
-@app.route("/users")
-def users(methods=["DELETE"]):
+@app.route("/users",methods=["DELETE"])
+def users():
     users=User.query.all()
     delete_user(users[-1].id)
     return "<br>".join([f"{user.username}-{user.password}-{user.gender}-{user.birth_date}" for user in users])
