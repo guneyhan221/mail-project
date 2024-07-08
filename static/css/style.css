@@ -7,7 +7,15 @@
     font-family: 'Poppins',sans-serif;
     color:black;
 }
-
+body {
+    background-image: url("../img/background2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 ul{
     list-style-type: none;
@@ -36,7 +44,7 @@ a{
 .navbar ul li{
     padding: 10px;
     padding-top: 40px;
-    transition: all 0.8s;
+    transition: all 0.5s;
 }
 
 .navbar ul li:hover{
