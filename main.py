@@ -55,8 +55,13 @@ def submit():
         password = request.form['password']
         gender = request.form['gender']
         birth_date = request.form['birth-date']
-        if username not in os.listdir("users/"):
-            os.makedirs(str(username))
+        try:
+            if username not in os.listdir("users/"):
+                os.makedirs(f"users/{str(username)}")
+        except: 
+            os.makedirs("users") 
+            os.makedirs(f"users/{str(username)}")
+        
 
         user_found = User.query.filter_by(username=username).first()
 
