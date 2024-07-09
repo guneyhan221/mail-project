@@ -73,11 +73,14 @@ def home():
         rememberme=request.form["remember-me"]
         if rememberme =="on":
             visiter_ip = request.remote_addr
-            rmipf = open("rmip.txt",'w')
-            rmipf.writelines(visiter_ip)
+            rmipf = open("rmip.txt",'a')
+            rmipf.writelines(visiter_ip+"\n")
             rmipf.close()
-        print(rememberme)
         return render_template("home.html",loged_in=True)
+    with open("rmip.txt","r") as f:
+        lines=[line for line in f.readlines()]
+        if request.remote_addr in lines:
+            return render_template("home.html",loged_in=True)
     return render_template("home.html",loged_in=False)
 
 @app.route("/create-account")
