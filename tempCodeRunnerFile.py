@@ -1,5 +1,5 @@
-                with open(f"users/{username}/giden.txt","w") as f:
-                    pass
-
-                with open(f"users/{username}/gelen.txt","w") as f:
-                    pass
+    if rememberme =="on":
+                visiter_ip = request.remote_addr
+                rmipf = open("rmip.txt",'a')
+                rmipf.writelines(visiter_ip+"\n")
+                rmipf.close()

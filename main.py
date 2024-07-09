@@ -70,16 +70,18 @@ def homepage():
 @app.route("/home/",methods=["GET", "POST"])
 def home():
     if request.method=="POST":
-        rememberme=request.form["remember-me"]
-        if rememberme =="on":
-            visiter_ip = request.remote_addr
-            rmipf = open("rmip.txt",'a')
-            rmipf.writelines(visiter_ip+"\n")
-            rmipf.close()
+        username=request.form.get("username")
+        rememberme=request.form.get("remember-me")
+        if rememberme:
+            if rememberme =="on":
+                visiter_ip = request.remote_addr
+                rmipf = open("rmip.txt",'a')
+                rmipf.writelines(f"{visiter_ip}-{username}\n")
+                rmipf.close()
         return render_template("home.html",loged_in=True)
     with open("rmip.txt","r") as f:
-        lines=[line for line in f.readlines()]
-        if request.remote_addr in lines:
+        lines=[line.strip() for line in f.readlines()]
+        if f"{visiter_ip}-{}" in lines:
             return render_template("home.html",loged_in=True)
     return render_template("home.html",loged_in=False)
 
