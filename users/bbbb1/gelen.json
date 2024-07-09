@@ -1,0 +1,9 @@
+{
+    "post": {
+        "user_name": "aaa1",
+        "to": "bbbb1",
+        "subject": "subject",
+        "content": "body",
+        "title": "test"
+    }
+}

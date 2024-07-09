@@ -34,6 +34,8 @@ def send_post(username,to,post_id,subject,content,title):
     data = {str(post_id):{"user_name":username,"to":to,"subject":subject,"content":content,"title":title}}
     with open(f"users/{username}/giden.json","a") as file:
         json.dump(data,file,indent=4)
+    with open(f"users/{to}/gelen.json","a") as file:
+        json.dump(data,file,indent=4)
 def get_post(username,post_id):
     with open(f"users/{username}/giden.json","r") as file:
         data=json.load(file)
@@ -42,6 +44,7 @@ def get_post(username,post_id):
 @app.before_request
 def create_databases():
     db.create_all()
+    send_post("aaa1","bbbb1","post","subject","body","test")
 #Routes
 @app.route("/")
 def homepage():
