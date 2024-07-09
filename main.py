@@ -17,18 +17,20 @@ class User(db.Model):
     password = db.Column(db.String(48), nullable=False)
     gender=db.Column(db.String(40),nullable=False)
     birth_date=db.Column(db.String(20),nullable=False)
+    ip_addr=db.Column(db.String(60),nullable=False)
 
     def __init__(self,username,password,gender,birth_date) -> None:
         self.username=username 
         self.password=password
         self.gender=gender 
         self.birth_date=birth_date
+        self.ip_addr=request.remote_addr
     def __repr__(self) -> str:
         return f"<User {self.id}>"
 
 #Functions
-def get_user(id:int)->User:
-    return User.query.get_or_404(id)
+def get_user(username:str)->User:
+    return User.query.filter_by(username=username).first()
 def delete_user(id:int):
     db.session.delete(User.query.filter_by(id=id).first())
     db.session.commit()
@@ -87,13 +89,19 @@ def home():
                 rmipf = open("rmip.txt",'a')
                 rmipf.writelines(f"{visiter_ip}-{username}\n")
                 rmipf.close()
-        return render_template("home.html",loged_in=True)
+        return redirect(f"/home/{username}")
     with open("rmip.txt","r") as f:
         lines=[line.strip() for line in f.readlines()]
         if f"{visiter_ip}-value" in lines:
             return render_template("home.html",loged_in=True)            
     return render_template("home.html",loged_in=False)
 
+@app.route("/home/<username>/")
+def usernamehome(username):
+    user=get_user(str(username))
+    if user.ip_addr==request.remote_addr:
+        return render_template("home.html",user=user,loged_in=True)
+    return f"Güvenlik sebebi nedeniyle buraya erişiminiz engellendi!"
 @app.route("/create-account")
 def createaccountpage():
     return render_template("createaccount.html")
