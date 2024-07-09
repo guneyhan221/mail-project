@@ -30,21 +30,27 @@ def get_user(id:int)->User:
 def delete_user(id:int):
     db.session.delete(User.query.filter_by(id=id).first())
     db.session.commit()
-def send_post(username,to,post_id,subject,content,title):
-    data = {str(post_id):{"user_name":username,"to":to,"subject":subject,"content":content,"title":title}}
-    with open(f"users/{username}/giden.json","a") as file:
-        json.dump(data,file,indent=4)
-    with open(f"users/{to}/gelen.json","a") as file:
-        json.dump(data,file,indent=4)
+def send_post(post_id,username,to,subject,content,title):
+    data={post_id:{"username":username,"to":to,"title":title,"subject":subject, "content":content}}
+
+    with open(f"users/{username}/giden.txt","a") as file:
+        file.write(data)
+        file.write("\n")
 def get_post(username,post_id):
-    with open(f"users/{username}/giden.json","r") as file:
-        data=json.load(file)
-        return data.get(post_id)
+    ...
 #Other decarators
 @app.before_request
 def create_databases():
     db.create_all()
-    send_post("aaa1","bbbb1","post","subject","body","test")
+    users=User.query.all()
+    for user in users:
+        if not os.path.exists(f"users/{user.username}"):
+            os.makedirs(f"users/{user.username}")
+            with open(f"users/{user.username}/giden.txt","w") as file:
+                pass
+            with open(f"users/{user.username}/gelen.txt","w") as file:
+                pass
+    send_post("ggdfdfgg2","bbbb1","post","subject","body","test")
 #Routes
 @app.route("/")
 def homepage():
@@ -84,18 +90,18 @@ def submit():
             try:
                 if username not in os.listdir("users/"):
                     os.makedirs(f"users/{str(username)}")
-                    with open(f"users/{username}/giden.json","w") as f:
+                    with open(f"users/{username}/giden.txt","w") as f:
                         pass
 
-                    with open(f"users/{username}/gelen.json","w") as f:
+                    with open(f"users/{username}/gelen.txt","w") as f:
                         pass
             except: 
                 os.makedirs("users") 
                 os.makedirs(f"users/{str(username)}")
-                with open(f"users/{username}/giden.json","w") as f:
+                with open(f"users/{username}/giden.txt","w") as f:
                     pass
 
-                with open(f"users/{username}/gelen.json","w") as f:
+                with open(f"users/{username}/gelen.txt","w") as f:
                     pass
             db.session.add(user)
             db.session.commit()
