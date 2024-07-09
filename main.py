@@ -96,7 +96,7 @@ def submit():
         gender = request.form['gender']
         birth_date = request.form['birth-date']
         user_found = User.query.filter_by(username=username).first()
-
+        endtoend.password_hash(str(password))
         if user_found:
             return redirect(url_for("createaccountpage"))
         else:
