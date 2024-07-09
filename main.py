@@ -1,6 +1,7 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 import os
+import json
 app=Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db' 
@@ -76,18 +77,18 @@ def submit():
             try:
                 if username not in os.listdir("users/"):
                     os.makedirs(f"users/{str(username)}")
-                    with open(f"users/{username}/giden.txt","w") as f:
+                    with open(f"users/{username}/giden.json","w") as f:
                         pass
 
-                    with open(f"users/{username}/gelen.txt","w") as f:
+                    with open(f"users/{username}/gelen.json","w") as f:
                         pass
             except: 
                 os.makedirs("users") 
                 os.makedirs(f"users/{str(username)}")
-                with open(f"users/{username}/giden.txt","w") as f:
+                with open(f"users/{username}/giden.json","w") as f:
                     pass
 
-                with open(f"users/{username}/gelen.txt","w") as f:
+                with open(f"users/{username}/gelen.json","w") as f:
                     pass
             db.session.add(user)
             db.session.commit()
