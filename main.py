@@ -30,15 +30,18 @@ def get_user(id:int)->User:
 def delete_user(id:int):
     db.session.delete(User.query.filter_by(id=id).first())
     db.session.commit()
-def send_post(usern,to,subject,content,title):
-    data = {"user_name":usern,"to":to,"subject":subject,"content":content,"title":title}
-    with open(f"users/{usern}/giden.json","a") as file:
+def send_post(username,to,post_id,subject,content,title):
+    data = {str(post_id):{"user_name":username,"to":to,"subject":subject,"content":content,"title":title}}
+    with open(f"users/{username}/giden.json","a") as file:
         json.dump(data,file,indent=4)
+def get_post(username,post_id):
+    with open(f"users/{username}/giden.json","r") as file:
+        data=json.load(file)
+        return data.get(post_id)
 #Other decarators
 @app.before_request
 def create_databases():
     db.create_all()
-    send_post("aaa1","to","subject","content","title")
 #Routes
 @app.route("/")
 def homepage():
@@ -69,9 +72,6 @@ def submit():
         password = request.form['password']
         gender = request.form['gender']
         birth_date = request.form['birth-date']
-        
-        
-
         user_found = User.query.filter_by(username=username).first()
 
         if user_found:
@@ -96,8 +96,6 @@ def submit():
                     pass
             db.session.add(user)
             db.session.commit()
-            
-
         return redirect(url_for("users"))  
     else:
         return redirect(url_for("createaccountpage"))
