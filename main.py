@@ -34,10 +34,16 @@ def send_post(post_id,username,to,subject,content,title):
     data={post_id:{"username":username,"to":to,"title":title,"subject":subject, "content":content}}
 
     with open(f"users/{username}/giden.txt","a") as file:
-        file.write(data)
+        file.write(json.dumps(data))
+        file.write("\n")
+    
+    data={post_id:{"from":username,"title":title,"subject":subject,"content":content}}
+    with open(f"users/{to}/gelen.txt","a") as file:
+        file.write(json.dumps(data))
         file.write("\n")
 def get_post(username,post_id):
-    ...
+    with open(f"users/{username}/gelen.txt","r") as file:
+        return dict(json.loads(file.read()))[post_id]
 #Other decarators
 @app.before_request
 def create_databases():
@@ -50,7 +56,8 @@ def create_databases():
                 pass
             with open(f"users/{user.username}/gelen.txt","w") as file:
                 pass
-    send_post("ggdfdfgg2","bbbb1","post","subject","body","test")
+    send_post("post_id","aaa1","guneyhan22","subject","content","title")
+    print(get_post("guneyhan22","post_id"))
 #Routes
 @app.route("/")
 def homepage():
