@@ -15,11 +15,14 @@
                 <li class="navbar-list-item" id="create-account">
                     <a href="/create-account">Hesap Oluştur</a>
                 </li>
+                <li class="navbar-list-item" id="login">
+                    <a href="/login">Giriş Yap</a>
+                </li>
             {% endif %}
-            <li class="navbar-list-item" id="login">
-                <a href="/login">Giriş Yap</a>
-            </li>
             {% if loged_in %}
+                <li class="navbar-list-item" id="login">
+                    <a href="/logout">Çıkış Yap</a>
+                </li>
                 <li class="navbar-list-item" id="profile">
                     <a href="#">Profil</a>
                 </li>
@@ -27,16 +30,20 @@
         </ul>
     </nav>
 
-    <p>Hoşgeldiniz!</p>
-    <span class="line-break">Mesajınızı göndermek için hesap oluşturun</span>
-    <br>
-    <span class="span2">veya giriş yapınız.</span>
-    <div class="button-container">
-        <div class="button"><a href="/create-account">Hesap Oluştur</a>
-    </div>
-    <br>
-    <div class="button-container2">
-        <div class="button2"><a href="/login">Giriş Yap</a>
-    </div>
+    {% if loged_in %}
+        <p>giriş yapıldı</p>
+    {% else %}
+        <p>Hoşgeldiniz!</p>
+        <span class="line-break">Mesajınızı göndermek için hesap oluşturun</span>
+        <br>
+        <span class="span2">veya giriş yapınız.</span>
+        <div class="button-container">
+            <div class="button"><a href="/create-account">Hesap Oluştur</a>
+        </div>
+        <br>
+        <div class="button-container2">
+            <div class="button2"><a href="/login">Giriş Yap</a>
+        </div>
+    {% endif %}
 </body>
 </html>

@@ -5,6 +5,7 @@ import json
 import phashing
 app=Flask(__name__)
 
+app.secret_key = '2a58f67140a0e2399b844fe294ecc21c'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -72,7 +73,15 @@ def home():
     visiter_ip = ""
     if request.method=="POST":
         username=request.form.get("username")
+        password=request.form.get("password")
         rememberme=request.form.get("remember-me")
+
+        user=User.query.filter_by(username=username,password=password).first()
+        
+        if not user:
+            flash("Kullanıcı adı veya şifre yanlış!","error")
+            return redirect(url_for("login"))
+        
         if rememberme:
             if rememberme =="on":
                 visiter_ip = request.remote_addr
@@ -83,9 +92,7 @@ def home():
     with open("rmip.txt","r") as f:
         lines=[line.strip() for line in f.readlines()]
         if f"{visiter_ip}-value" in lines:
-            return render_template("home.html",loged_in=True)
-            return f"Hoşgeldin {username}"
-            
+            return render_template("home.html",loged_in=True)            
     return render_template("home.html",loged_in=False)
 
 @app.route("/create-account")
@@ -123,13 +130,12 @@ def submit():
                     pass
             db.session.add(user)
             db.session.commit()
-        return redirect(url_for("users"))  
+        return redirect(url_for("home"))  
     else:
         return redirect(url_for("createaccountpage"))
 
 @app.route("/login")
 def login():
-
     return render_template("login.html")
 @app.route("/users")
 def users():
