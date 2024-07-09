@@ -2,7 +2,7 @@ from flask import *
 from flask_sqlalchemy import SQLAlchemy
 import os
 import json
-import endtoend
+import phashing
 app=Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db' 
@@ -69,6 +69,7 @@ def homepage():
 
 @app.route("/home/",methods=["GET", "POST"])
 def home():
+    visiter_ip = ""
     if request.method=="POST":
         username=request.form.get("username")
         rememberme=request.form.get("remember-me")
@@ -81,7 +82,7 @@ def home():
         return render_template("home.html",loged_in=True)
     with open("rmip.txt","r") as f:
         lines=[line.strip() for line in f.readlines()]
-        if f"{visiter_ip}-{}" in lines:
+        if f"{visiter_ip}" in lines:
             return render_template("home.html",loged_in=True)
     return render_template("home.html",loged_in=False)
 
@@ -94,11 +95,10 @@ def createaccountpage():
 def submit():
     if request.method=="POST":
         username = request.form['username']
-        password = request.form['password']
+        password = phashing.password_hash(str(request.form['password']))
         gender = request.form['gender']
         birth_date = request.form['birth-date']
         user_found = User.query.filter_by(username=username).first()
-        endtoend.password_hash(str(password))
         if user_found:
             return redirect(url_for("createaccountpage"))
         else:

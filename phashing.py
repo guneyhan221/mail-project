@@ -8,8 +8,5 @@ def password_hash(text):
     hashed_text = text
     for i in range(10000):
         hashed_text = hash_string(hashed_text)
-    print(f"Hash: {hashed_text}")
-    with open("hp.txt","a") as file:
-        file.write(hashed_text)
-
-
+    #print(f"Hash: {hashed_text}") test code
+    return hashed_text
