@@ -79,7 +79,6 @@ def home():
         user=User.query.filter_by(username=username,password=password).first()
         
         if not user:
-            flash("Kullanıcı adı veya şifre yanlış!","error")
             return redirect(url_for("login"))
         
         if rememberme:
