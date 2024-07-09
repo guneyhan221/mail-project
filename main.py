@@ -81,8 +81,10 @@ def home():
         return render_template("home.html",loged_in=True)
     with open("rmip.txt","r") as f:
         lines=[line.strip() for line in f.readlines()]
-        if f"{visiter_ip}-{}" in lines:
+        if f"{visiter_ip}-value" in lines:
             return render_template("home.html",loged_in=True)
+            return f"Hoşgeldin {username}"
+            
     return render_template("home.html",loged_in=False)
 
 @app.route("/create-account")

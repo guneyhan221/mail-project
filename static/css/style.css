@@ -59,3 +59,88 @@ a{
     top:0px;
     left:160px;
 }
+
+p {
+    position: absolute;
+    top: 27%;
+    left: 39.5%;
+    font-size: 50px;
+}
+
+span { 
+    position: absolute;
+    top: 42%;
+    left: 34%;
+    letter-spacing: 2px;
+    font-size: 17px;
+}
+
+.span2 { 
+    position: absolute;
+    top: 46%;
+    left: 42%;
+    letter-spacing: 2px;
+    font-size: 17px;
+}
+
+.line-break {
+    display: inline-block;
+}
+
+.button-container {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.button
+{
+    position: relative;
+    text-align: center;
+    width: 250px;
+    height: 75px;
+    font-size: 40px;
+    font-weight: 400;
+    color: rgb(78, 255, 255);
+    background-color: rgb(78, 255, 255);
+    border-radius: 15px;
+    letter-spacing: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.button:hover
+{
+    box-shadow: 0 5px 50px 0 rgb(78, 255, 255);
+}
+
+.button2-container {
+    position: relative;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.button2
+{
+    position: relative;
+    text-align: center;
+    width: 250px;
+    height: 75px;
+    font-size: 40px;
+    font-weight: 400;
+    color: rgb(78, 255, 255);
+    background-color: rgb(78, 255, 255);
+    border-radius: 15px;
+    letter-spacing: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.button2:hover
+{
+    box-shadow: 0 5px 50px 0 rgb(78, 255, 255);
+}
