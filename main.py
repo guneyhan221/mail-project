@@ -31,19 +31,22 @@ def delete_user(id:int):
     db.session.delete(User.query.filter_by(id=id).first())
     db.session.commit()
 def send_post(post_id,username,to,subject,content,title):
-    data={post_id:{"username":username,"to":to,"title":title,"subject":subject, "content":content}}
+    data=f"{post_id}-{username}-{to}-{subject}-{content}-{title}"
 
     with open(f"users/{username}/giden.txt","a") as file:
-        file.write(json.dumps(data))
-        file.write("\n")
+        file.write(f"{data}\n")
+
     
-    data={post_id:{"from":username,"title":title,"subject":subject,"content":content}}
+    data=f"{post_id}-{username}-{subject}-{content}-{title}"
     with open(f"users/{to}/gelen.txt","a") as file:
-        file.write(json.dumps(data))
-        file.write("\n")
+        file.write(f"{data}\n")
+
 def get_post(username,post_id):
     with open(f"users/{username}/gelen.txt","r") as file:
-        return dict(json.loads(file.read()))[post_id]
+        lines=[line for line in file.readlines()]
+        for line in lines:
+            if line.split("-")[0]==post_id:
+                return line.strip()
 #Other decarators
 @app.before_request
 def create_databases():
@@ -52,10 +55,12 @@ def create_databases():
     for user in users:
         if not os.path.exists(f"users/{user.username}"):
             os.makedirs(f"users/{user.username}")
-            with open(f"users/{user.username}/giden.txt","w") as file:
-                pass
-            with open(f"users/{user.username}/gelen.txt","w") as file:
-                pass
+            with open(f"users/{user.username}/giden.txt","w") as f:
+                ...
+
+            with open(f"users/{user.username}/gelen.txt","w") as f:
+                ...
+
     send_post("post_id","aaa1","guneyhan22","subject","content","title")
     print(get_post("guneyhan22","post_id"))
 #Routes
@@ -98,10 +103,10 @@ def submit():
                 if username not in os.listdir("users/"):
                     os.makedirs(f"users/{str(username)}")
                     with open(f"users/{username}/giden.txt","w") as f:
-                        pass
+                        ...
 
                     with open(f"users/{username}/gelen.txt","w") as f:
-                        pass
+                        ...
             except: 
                 os.makedirs("users") 
                 os.makedirs(f"users/{str(username)}")

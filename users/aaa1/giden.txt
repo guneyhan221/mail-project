@@ -1,6 +1,6 @@
-{"post_id": {"username": "aaa1", "to": "guneyhan22", "title": "title", "subject": "subject", "content": "content"}}
-{"post_id": {"username": "aaa1", "to": "guneyhan22", "title": "title", "subject": "subject", "content": "content"}}
-{"post_id": {"username": "aaa1", "to": "guneyhan22", "title": "title", "subject": "subject", "content": "content"}}
-{"post_id": {"username": "aaa1", "to": "guneyhan22", "title": "title", "subject": "subject", "content": "content"}}
-{"post_id": {"username": "aaa1", "to": "guneyhan22", "title": "title", "subject": "subject", "content": "content"}}
-{"post_id": {"username": "aaa1", "to": "guneyhan22", "title": "title", "subject": "subject", "content": "content"}}
+post_id-aaa1-guneyhan22-subject-content-title
+post_id-aaa1-guneyhan22-subject-content-title
+post_id-aaa1-guneyhan22-subject-content-title
+post_id-aaa1-guneyhan22-subject-content-title
+post_id-aaa1-guneyhan22-subject-content-title
+post_id-aaa1-guneyhan22-subject-content-title
