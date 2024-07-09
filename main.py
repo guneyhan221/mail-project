@@ -61,8 +61,6 @@ def create_databases():
             with open(f"users/{user.username}/gelen.txt","w") as f:
                 ...
 
-    send_post("post_id","aaa1","guneyhan22","subject","content","title")
-    print(get_post("guneyhan22","post_id"))
 #Routes
 @app.route("/")
 def homepage():
