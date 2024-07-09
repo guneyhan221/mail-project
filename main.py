@@ -30,11 +30,15 @@ def get_user(id:int)->User:
 def delete_user(id:int):
     db.session.delete(User.query.filter_by(id=id).first())
     db.session.commit()
+def send_post(usern,to,subject,content,title):
+    data = {"user_name":usern,"to":to,"subject":subject,"content":content,"title":title}
+    with open(f"users/{usern}/giden.json","a") as file:
+        json.dump(data,file,indent=4)
 #Other decarators
 @app.before_request
 def create_databases():
     db.create_all()
-
+    send_post("aaa1","to","subject","content","title")
 #Routes
 @app.route("/")
 def homepage():
