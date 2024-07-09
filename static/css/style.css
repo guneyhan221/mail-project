@@ -45,7 +45,7 @@ a{
 .navbar ul li{
     padding: 10px;
     padding-top: 40px;
-    transition: all 0.5s;
+    transition: all 1s;
 }
 
 .navbar ul li:hover{
