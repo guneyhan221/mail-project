@@ -52,12 +52,20 @@ a{
     transform: scale(1.2);
 }
 
-#logo-image{
+#logo-button {
     position: absolute;
-    width:270px; /*140*/
-    height:100px; /*70*/
+    border: none;
+    padding: 0;
+    background: none;
     top:0px;
     left:160px;
+    z-index: 10;
+}
+
+#logo-image{
+    width:270px; /*140*/
+    height:100px; /*70*/
+    pointer-events: all;
 }
 
 p {

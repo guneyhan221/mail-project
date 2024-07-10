@@ -68,6 +68,10 @@ input:focus{
     transition: all 0.4s;
 }
 
+#submit-button:hover {
+    transition: 0.5;
+}
+
 .visibility-image{
     position: absolute;
     width: 20px;
