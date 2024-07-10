@@ -115,7 +115,7 @@ body{
     background-color: #313a43;
     color:white;
     cursor: pointer;
-    transition: all .8s;
+    transition: all 0.4s;
 }
 
 
