@@ -2,7 +2,7 @@ from flask import *
 from flask_sqlalchemy import SQLAlchemy
 import os
 import json
-import phashing
+import endtoend
 app=Flask(__name__)
 
 app.secret_key = '2a58f67140a0e2399b844fe294ecc21c'
@@ -35,6 +35,7 @@ def delete_user(id:int):
     db.session.delete(User.query.filter_by(id=id).first())
     db.session.commit()
 def send_post(post_id,username,to,subject,content,title):
+    
     data=f"{post_id}-{username}-{to}-{subject}-{content}-{title}"
 
     with open(f"users/{username}/giden.txt","a") as file:
@@ -98,7 +99,14 @@ def home():
 
 @app.route("/home/<username>/")
 def usernamehome(username):
-    user=get_user(str(username))
+    """
+    ! hata veriyo kod
+    ! try except kullanın
+    ! hata kulanıcı hesabına girisyapmamısken /home/<username>/ e gitmeye çalısırsa oluyo (AttributeError: 'NoneType' object has no attribute 'ip_addr')
+    ? ben kodu neden kulandınızı anlamadım o yüzden try execpt koyamam
+    * -mirhanveekibi
+    """
+    user=get_user(str(username)) 
     if user.ip_addr==request.remote_addr:
         return render_template("home.html",user=user,loged_in=True)
     return f"Güvenlik sebebi nedeniyle buraya erişiminiz engellendi!"
@@ -111,7 +119,7 @@ def createaccountpage():
 def submit():
     if request.method=="POST":
         username = request.form['username']
-        password = phashing.password_hash(str(request.form['password']))
+        password = endtoend.password_hash(str(request.form['password']))
         gender = request.form['gender']
         birth_date = request.form['birth-date']
         user_found = User.query.filter_by(username=username).first()
