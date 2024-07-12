@@ -1,3 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+
 input {
     display: none;
 }
@@ -25,11 +33,16 @@ label {
     width: 30px;
     height: 30px;
     border-radius: 70px;
-    /*img logo_c*/
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05)
                 -10px -10px 30px rgba(0, 0, 0, 0.05) inset;
     display: flex;
     align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;  
+    left: 0%;
+    transform: translate(10%, -50%);
     overflow: hidden;
 }
 
@@ -41,14 +54,40 @@ svg {
 .sun {
     color: #FFD600;
     margin-top: 0%;
+    opacity: 1;
 }
 
 .moon {
     color: white;
     margin-top: -150%;
+    opacity: 0;
 }
 
 input [type="checkbox"]:checked + .display{
     background: #2C2C2F;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5)
+                -10px -10px 30px rgba(0, 0, 0, 0.5) inset;
+}
 
+input [type="checkbox"]:checked + .display label {
+    background: #1F1F21;
+}
+
+input [type="checkbox"]:checked + .display label .circle {
+    left: 100%;
+    transform: translate(-110%, -50%);
+}
+
+input [type="checkbox"]:checked + .display label .circle .sun{
+    margin-top: -150%;
+    opacity: 0;
+}
+
+input [type="checkbox"]:checked + .display label .circle .moon{
+    margin-top: 0%;
+    opacity: 1;
+}
+
+label:active .circle {
+    width: 100px;
 }
