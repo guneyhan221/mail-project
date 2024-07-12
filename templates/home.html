@@ -14,9 +14,6 @@
         <img src="../static/img/logo_c.png" alt="Logo" id="logo-image" href="/home">
     </button>
 
-    <script>
-        //<img src="../static/img/logo_dark.png" alt="Logo" id="logo-dark" href="/home">
-    </script>
 
     <nav id="navbar" class="navbar">
         <ul id="navbar-ul">
@@ -40,17 +37,17 @@
     </nav>
 
     {% if loged_in %}
-        <p>Giriş Yapıldı!</p>
+        <span>Giriş Yapıldı!</span>
         <br>
-        <span>Hadi ilk mesajınızı gönderelim.</span>
+        <p>Hadi ilk mesajınızı gönderelim.</p>
         <div class="button-container">
             <div class="button"><a href="/create-message">Oluştur</a>
         </div>
     {% else %}
-        <p>Hoşgeldiniz!</p>
-        <span class="line-break">Mesajınızı göndermek için hesap oluşturun</span>
+        <span>Hoşgeldiniz!</span>
+        <p class="line-break">Mesajınızı göndermek için hesap oluşturun</p>
         <br>
-        <span class="span2">veya giriş yapınız.</span>
+        <p class="span2">veya giriş yapınız.</p>
         <div class="button-container">
             <div class="button"><a href="/create-account">Hesap Oluştur</a>
         </div>
@@ -79,9 +76,9 @@
         document.getElementById('toggle').addEventListener('change', function() {
             var logo = document.getElementById('logo-image');
             if (this.checked) {
-                logo.src = 'logo_dark.png';
+                logo.src = '../static/img/logo_dark.png';
             } else {
-                logo.src = 'logo_c.png';
+                logo.src = '../static/img/logo_c.png';
             }
         });
     </script>
