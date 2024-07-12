@@ -31,7 +31,7 @@ class User(db.Model):
         return f"<User {self.id}>"
 
 #Functions
-def get_user(username:str)->User:
+def get_user(username:str)->User|None:
     return User.query.filter_by(username=username).first()
 def delete_user(id:int):
     db.session.delete(User.query.filter_by(id=id).first())
@@ -138,7 +138,7 @@ def submit():
                     with open(f"users/{username}/gelen.txt","w") as f:
                         ...
             except: 
-                os.makedirs("users") 
+                os.makedirs("users")
                 os.makedirs(f"users/{str(username)}")
                 with open(f"users/{username}/giden.txt","w") as f:
                     pass
