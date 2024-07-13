@@ -76,13 +76,74 @@
     </div>
 
     <script>
+        function changeBoxShadowOn() {
+            button.style.boxShadow = "0 5px 50px 0 #332c2c";
+        }
+
+
+        function changeBoxShadowOff() {
+            utton.style.boxShadow = "none";
+        }
+
         document.getElementById('toggle').addEventListener('change', function() {
             var logo = document.getElementById('logo-image');
+            var button = document.querySelector('.button');
+            var button2 = document.querySelector('.button2');
+
             if (this.checked) {
                 logo.src = '../static/img/logo_dark.png';
+                navbar.style.backgroundColor = "#332c2c";
+                button.style.boxShadow = "0 5px 50px 0 #332c2c";
+
+                var links = navbar.getElementsByTagName('a');
+                for (var i = 0; i < links.length; i++) {
+                    links[i].style.color = "white";
+                }
+
+                var links_b = button.getElementsByTagName('a');
+                for (var i = 0; i < links_b.length; i++) {
+                    links_b[i].style.color = "white";
+                }
+
+                var links_b2 = button2.getElementsByTagName('a');
+                for (var i = 0; i < links_b2.length; i++) {
+                    links_b2[i].style.color = "white";
+                }
+
+                button.style.backgroundColor = "#332c2c";
+                button.style.color = "white";
+                button2.style.backgroundColor = "#332c2c";
+                button2.style.color = "white";
+                
             } else {
                 logo.src = '../static/img/logo_c.png';
-            }
+                navbar.style.backgroundColor = "#e6f2ff";
+                navbar.style.color = "black";
+
+                var links = navbar.getElementsByTagName('a');
+                for (var i = 0; i < links.length; i++) {
+                    links[i].style.color = "black";
+                }
+
+                var links_b = button.getElementsByTagName('a');
+                for (var i = 0; i < links_b.length; i++) {
+                    links_b[i].style.color = "black";
+                }
+
+                var links_b2 = button2.getElementsByTagName('a');
+                for (var i = 0; i < links_b2.length; i++) {
+                    links_b2[i].style.color = "black";
+                }
+
+                button.style.backgroundColor = "#4effff";
+                button.style.color = "black";
+
+                button2.style.backgroundColor = "#4effff";
+                button2.style.color = "black";
+
+            button.addEventListener('mouseenter', changeBoxShadowOn);
+            button.addEventListener('mouseleave', changeBoxShadowOff);
+        }
         });
     </script>
 </body>
