@@ -18,6 +18,10 @@ a{
 }
 
 body{
+    background-image: url("../img/arkaplan.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: end;
     display: flex;
     justify-content: center;
     margin-top: 5%;
@@ -29,6 +33,7 @@ body{
     border-radius: 5px;
     border:1px solid black;
     position: relative;
+    backdrop-filter: blur(25px);
 }
 
 .header-text{
@@ -47,6 +52,7 @@ body{
     border: none;
     border-bottom: 1px solid black;
     transition: all 0.8s;
+    background: rgba(255, 255, 255, 0);
 }
 
 .username-input input:focus{
@@ -70,6 +76,7 @@ body{
     border: none;
     border-bottom: 1px solid black;
     transition: all 0.8s;
+    background: rgba(255, 255, 255, 0);
 }
 
 .password-information-text{
@@ -132,6 +139,7 @@ body{
     border-bottom: 1px solid black;
     width:80%;
     transition: all .8s;
+    background: rgba(255, 255, 255, 0);
 }
 
 #password-again-input:focus{

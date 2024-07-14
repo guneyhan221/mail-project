@@ -12,7 +12,17 @@ document.addEventListener("DOMContentLoaded", function(){
         
     })
 
-    form.addEventListener("submit",()=>{
-        localStorage.setItem("rememberMe",rememberCheckbox.value);
-    })
+    const existingusernames = ["Hilmi10"]; // Burayı database'deki username'ler ile değiştireceğiz.
+
+    form.addEventListener("submit", (event) => {
+        const usernameInput = document.querySelector("#username"); // Kullanıcı adı girişi
+        const rememberCheckbox = document.querySelector("#rememberMe"); // Remember me checkbox
+    
+        if (existingUsernames.includes(usernameInput.value)) {
+            event.preventDefault(); // Form gönderimini durdur
+            alert("Bu kullanıcı adı zaten mevcut. Lütfen başka bir kullanıcı adı seçin.");
+        } else {
+            localStorage.setItem("rememberMe", rememberCheckbox.checked);
+        }
+    });
 })
