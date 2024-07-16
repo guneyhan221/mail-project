@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 import json
 import endtoend
+import sqlite3
+
 app=Flask(__name__)
 
 app.secret_key = '2a58f67140a0e2399b844fe294ecc21c'
@@ -13,22 +15,6 @@ db=SQLAlchemy(app)
 
 id_addr = db #Denemelik
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(24), nullable=False,unique=True)
-    password = db.Column(db.String(48), nullable=False)
-    gender=db.Column(db.String(40),nullable=False)
-    birth_date=db.Column(db.String(20),nullable=False)
-    ip_addr=db.Column(db.String(60),nullable=False)
-
-    def __init__(self,username,password,gender,birth_date) -> None:
-        self.username=username 
-        self.password=password
-        self.gender=gender 
-        self.birth_date=birth_date
-        self.ip_addr=request.remote_addr
-    def __repr__(self) -> str:
-        return f"<User {self.id}>"
 
 #Functions
 def get_user(username:str)->User|None:
@@ -81,6 +67,10 @@ def home():
         password=request.form.get("password")
         rememberme=request.form.get("remember-me")
 
+        with open(f"user_{username}.txt", "r") as file:
+            usernames = [line.strip() for line in file]
+        return usernames
+
         user=User.query.filter_by(username=username,password=password).first()
         
         if not user:
@@ -98,6 +88,17 @@ def home():
         if f"{visiter_ip}-value" in lines:
             return render_template("home.html",loged_in=True)            
     return render_template("home.html",loged_in=False)
+
+
+@app.route('/check-username', methods=['POST'])
+def check_username():
+    data = request.get_json()
+    isim = data.get('username')
+    if isim in get_isim_from_file():
+        return jsonify({"exists": True})
+    else:
+        return jsonify({"exists": False})
+
 
 @app.route("/home/<username>/")
 def usernamehome(username):
