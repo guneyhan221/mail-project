@@ -108,9 +108,14 @@ def usernamehome(username):
     ? ben kodu neden kulandınızı anlamadım o yüzden try execpt koyamam
     * -mirhanveekibi
     """
+
     user=get_user(str(username)) 
+    if user is None:
+        return "Böyle bir kullanıcı yok!"
+
     if user.ip_addr==request.remote_addr:
         return render_template("home.html",user=user,loged_in=True)
+    
     return f"Güvenlik sebebi nedeniyle buraya erişiminiz engellendi!"
 @app.route("/create-account")
 def createaccountpage():
